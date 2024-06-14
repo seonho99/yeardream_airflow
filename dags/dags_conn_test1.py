@@ -39,7 +39,7 @@ with DAG(
 
     t8 = EmptyOperator(
         task_id="t8"
-    )git 
+    )
 
     t1 >> t2
     t1 >> t3
