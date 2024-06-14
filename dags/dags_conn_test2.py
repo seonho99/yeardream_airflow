@@ -3,7 +3,7 @@ import pendulum
 from airflow.operators.empty import EmptyOperator
 
 with DAG(
-    dag_id="dags_conn_test1",
+    dag_id="dags_conn_test2",
     schedule=None,
     start_date=pendulum.datetime(2024, 6, 14, tz="Asia/Seoul"),
     catchup=False
@@ -39,12 +39,8 @@ with DAG(
 
     t8 = EmptyOperator(
         task_id="t8"
-    )git 
+    )
 
-    t1 >> t2
-    t1 >> t3
-    t3 >> t4
-    t5 >> t4
-    t4 >> t6
-    t7 >> t6
-    t6 >> t8
+    t1 >> [t2, t3] >> t4
+    t5 >> t4 
+    [t4, t7] >> t6 >> t8:
