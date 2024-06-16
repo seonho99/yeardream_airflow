@@ -9,4 +9,4 @@ with DAG(
     start_date=datetime.datetime(2024, 6, 1, tzinfo=datetime.timezone(datetime.timedelta(hours=9))),
     catchup=False
 ):
-    EmptyOperator(task_id="task")
+    EmptyOperator(tag="homework")
